@@ -1,0 +1,154 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.nav-bar {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+  margin: 0;
+  background: linear-gradient(#6BF178, #42964B);
+  padding-left: 5vw;
+  padding-right: 5vw;
+  box-shadow: 1px 1px gray;
+}
+/*  #285A2D*/
+h1 {
+  font-family: 'Graduate', cursive;
+  font-weight: bold;
+  font-size: 400%;
+  color: #181818;
+}
+
+a.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  background: #181818;
+  border: 1px solid white;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #181818;
+
+}
+
+main {
+  display: grid;
+  grid-template-columns: 25vw 75vw;
+  height: 80vh;
+}
+
+
+.SideNav {
+  grid-column: 1 / 2;
+}
+
+.Matchups {
+  grid-column: 2 / 3;
+}
+
+.my-pool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: 47.5% 5% 47.5%;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  box-sizing: content-box;
+
+}
+
+.away-teams {
+  grid-column: 1 / 2;
+  cursor: pointer;
+}
+
+.home-teams {
+  grid-column: 3 / 4;
+  cursor: pointer;
+}
+
+h3 {
+  grid-column: 2 / 3;
+  vertical-align: middle;
+  color: #FF8C00;
+  text-align: center;
+}
+
+.at {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.matchup-headers {
+  grid-column: 1 / 4;
+  height: 61px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5vh;
+  margin-top: 2.5vh;
+  align-items: center;
+
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  margin-right: 25px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #FF8C00;
+  font-family: 'Graduate', cursive;
+  font-weight: bold;
+  font-size: 200%;
+}
+
+#nhl {
+  border-radius: 0px 5px 5px 0px;
+}
+
+#submit-button {
+  margin-left: 185px;
+}
