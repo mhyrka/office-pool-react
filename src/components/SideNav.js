@@ -1,11 +1,13 @@
 import React from 'react'
 
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { StripeProvider } from 'react-stripe-elements'
 
-const CardExampleCard = () => (
+
+const SideNav = () => (
   <div className='my-pool'>
     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', height: '66px', marginTop: '11px'}}>
-      <Icon name='setting' size='large' color='red'></Icon>
+      <Icon name='setting' size='large' color='red'style={{marginRight: '40px'}}></Icon>
       <h2>My Pool</h2>
     </div>
     <Card style={{margin: '10px', height: '170px'}}>
@@ -26,8 +28,9 @@ const CardExampleCard = () => (
         </div>
       </Card.Content>
     </Card>
+    
 
   </div>
 )
 
-export default CardExampleCard
+export default SideNav

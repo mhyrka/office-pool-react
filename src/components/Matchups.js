@@ -7,19 +7,16 @@ class Matchups extends React.Component {
     this.homeNames = this.props.homeTeam.split(' ').pop()
     this.awayNames = this.props.awayTeam.split(' ').pop()
 
-    this.myPicks = []
-
     this.state = {
-      picks: []
+      picks: [],
+      counter: 0
     }
   }
 
-
-
   addPick = (event, data) => {
     event.preventDefault()
-    this.myPicks.push(data)
-    console.log(this.myPicks)
+    this.props.addPick(data)
+    console.log(this.props.picks)
   }
 
 
@@ -28,7 +25,7 @@ class Matchups extends React.Component {
 
       <React.Fragment>
         <div className='left' >
-          <Card className='away-teams' onClick={(e) => this.addPick(e, this.props.awayTeam)} id={this.props.awayTeam}>
+          <Card className='away-teams' id={this.props.awayTeam} onClick={(e) => this.addPick(e, this.props.awayTeam)}>
             <Card.Content>
               <Image floated='right' size='mini' src={`./logos/${this.awayNames}.png`} style={{margin: '0', height: 'auto', width: '40px'}}/>
             <Card.Header>
@@ -46,7 +43,7 @@ class Matchups extends React.Component {
 
        <div className='at'><h3>-AT-</h3></div>
 
-      <div className='right'>
+      <div className='right' >
         <Card className='home-teams' onClick={(e) => this.addPick(e, this.props.homeTeam)}>
           <Card.Content>
             <Image floated='right' size='mini' src={`./logos/${this.homeNames}.png`} style={{margin: '0', height: 'auto', width: '40px'}}/>

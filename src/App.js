@@ -3,14 +3,20 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar'
 import Matchups from './components/Matchups'
+import CheckoutForm from './components/CheckoutForm'
 
 import SideNav from './components/SideNav'
 import { Button } from 'semantic-ui-react'
+// import { StripeProvider, Elements, InjectedCheckoutForm } from 'react-stripe-elements'
+
+
 class App extends Component {
-  constructor() {
-  super()
+  constructor(props) {
+  super(props)
   this.state = {
-    games: [{week_1: []}]
+    games: [{week_1: []}],
+    picks: [],
+    counter: 0
     }
   }
 
@@ -18,11 +24,14 @@ class App extends Component {
     fetch('https://office-pool-nfl-schedule.herokuapp.com/')
     .then(response => response.json())
     .then(response => this.setState({games: response}))
-    .then(response => this.makeGames(response))
   }
 
-  makeGames(data) {
-    let weekOne = this.state.games.map(games => games.week_1)[0].map(team => team)
+  addPick = (team) => {
+    this.setState({
+      counter: this.state.counter+1,
+      picks: this.state.picks.concat([team])
+    })
+
   }
 
   render() {
@@ -40,7 +49,7 @@ class App extends Component {
               </div>
             </div>
             <div className="games" style={{height: '100vh'}}>
-              {this.state.games.find(week => week.week_1).week_1.map((team, index) => <Matchups key={index} awayTeam={team.away} homeTeam={team.home} />)}
+              {this.state.games.find(week => week.week_1).week_1.map((team, index) => <Matchups key={index} addPick={this.addPick} picks={this.state.picks} awayTeam={team.away} homeTeam={team.home} />)}
             </div>
           </section>
         </main>

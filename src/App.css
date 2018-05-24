@@ -58,7 +58,7 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 25vw 75vw;
+  grid-template-columns: 30vw 70vw;
   height: 80vh;
 }
 
