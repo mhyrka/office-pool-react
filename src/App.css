@@ -27,17 +27,22 @@ time, mark, audio, video {
   align-items: center;
   height: 15vh;
   margin: 0;
-  background: linear-gradient(#6BF178, #42964B);
+  background: linear-gradient(#6BF178, #05720b);
   padding-left: 5vw;
   padding-right: 5vw;
   box-shadow: 1px 1px gray;
 }
-/*  #285A2D*/
+/*
+#285A2D
+#1d7a22
+
+*/
 h1 {
   font-family: 'Graduate', cursive;
   font-weight: bold;
   font-size: 400%;
   color: #181818;
+	/* text-shadow: 1px 1px #FF8C00; */
 }
 
 a.item {
@@ -151,4 +156,11 @@ h2 {
 
 #submit-button {
   margin-left: 185px;
+}
+
+#modal-header {
+	color: #181818;
+  font-family: 'Graduate', cursive;
+  font-weight: bold;
+	font-size: 200%;
 }

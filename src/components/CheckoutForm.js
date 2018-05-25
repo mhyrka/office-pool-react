@@ -1,8 +1,7 @@
 import React from 'react';
-import {injectStripe} from 'react-stripe-elements';
-
-// import AddressSection from './AddressSection';
-import CardSection from './CardSection';
+import { Button } from 'semantic-ui-react'
+import {injectStripe} from 'react-stripe-elements'
+import CardSection from './CardSection'
 
 class CheckoutForm extends React.Component {
   handleSubmit = (ev) => {
@@ -12,7 +11,7 @@ class CheckoutForm extends React.Component {
     // Within the context of `Elements`, this call to createToken knows which Element to
     // tokenize, since there's only one in this group.
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(({token}) => {
-      console.log('Received Stripe token:', token);
+      console.log('Received Stripe token:', token)
     });
 
     // However, this line of code will do the same thing:
@@ -22,9 +21,8 @@ class CheckoutForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        
         <CardSection />
-        <button>Confirm order</button>
+        <Button primary style={{marginTop: '20px'}}>Confirm</Button>
       </form>
     );
   }

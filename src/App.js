@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Navbar from './components/Navbar'
 import Matchups from './components/Matchups'
-import CheckoutForm from './components/CheckoutForm'
 
+import { StripeProvider } from 'react-stripe-elements'
 import SideNav from './components/SideNav'
 import { Button } from 'semantic-ui-react'
-// import { StripeProvider, Elements, InjectedCheckoutForm } from 'react-stripe-elements'
+
+import AddFunds from './components/AddFunds'
+
 
 
 class App extends Component {
@@ -52,7 +53,9 @@ class App extends Component {
               {this.state.games.find(week => week.week_1).week_1.map((team, index) => <Matchups key={index} addPick={this.addPick} picks={this.state.picks} awayTeam={team.away} homeTeam={team.home} />)}
             </div>
           </section>
+          
         </main>
+
       </div>
     );
   }
