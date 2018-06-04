@@ -18,7 +18,7 @@ class PoolMembers extends React.Component {
 
     return (
       <React.Fragment>
-        <Card>
+        <Card style={{height: '154px'}}>
           <Card.Content>
             <Image floated='right' size='mini' src='../DM.png' />
             <Card.Header>

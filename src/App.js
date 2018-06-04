@@ -54,25 +54,25 @@ class App extends Component {
     console.log(this.state.picks)
   }
 
-  // submitPicks = (event) => {
-  //   event.preventDefault()
-  //   fetch('https://office-pool-nfl-schedule.herokuapp.com/user_picks', {
-  //          method: 'POST',
-  //          headers: new Headers ({
-  //          'content-type': 'application/json',
-  //         }),
-  //           body: JSON.stringify({
-  //             user_name: this.state.user,
-  //             picks: this.state.picks
-  //           })
-  //           })
-  //           .then(response => response.json())
-  //           .then(response => {
-  //               response.error
-  //               ? this.setState({ error: true })
-  //               : this.setState({ error: false })
-  //           })
-  // }
+  submitPicks = (event) => {
+    event.preventDefault()
+    fetch('https://office-pool-nfl-schedule.herokuapp.com/user_picks', {
+           method: 'POST',
+           headers: new Headers ({
+           'content-type': 'application/json',
+          }),
+            body: JSON.stringify({
+              user_name: this.state.user,
+              picks: this.state.picks
+            })
+            })
+            .then(response => response.json())
+            .then(response => {
+                response.error
+                ? this.setState({ error: true })
+                : this.setState({ error: false })
+            })
+  }
 
 
   remove = (array, element) => {
