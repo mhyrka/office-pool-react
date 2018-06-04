@@ -14,23 +14,29 @@ class Matchups extends React.Component {
     }
   }
 
-  addPick = (event, data, teamId) => {
+  addPick = (event, data, teamId, opponent) => {
     event.preventDefault()
 
-    this.props.addPick(event, data, teamId)
+    this.props.addPick(event, data, teamId, opponent)
 
     if (this.props.awayTeam === data) {
       this.setState({
         awayBorder: '3px solid chartreuse',
         homeBorder: 'none'
-      }, () => { this.props.picks.includes(data) ? null : this.setState({awayBorder: 'none'}) })
+      }, () => { this.removeBorder(data) })
     } else if (this.props.homeTeam === data) {
       this.setState({
         homeBorder: '3px solid chartreuse',
         awayBorder: 'none'
-      }, () => { this.props.picks.includes(data) ? null : this.setState({homeBorder: 'none'}) })
+      }, () => { this.removeBorder(data) })
     }
+  }
 
+  removeBorder = (data) => {
+    
+    if (!this.props.picks.includes(data)) {
+      this.setState({homeBorder: 'none', awayBorder: 'none'})
+    }
   }
 
 
@@ -41,7 +47,8 @@ class Matchups extends React.Component {
         <div className='left'>
           <Card className='away-teams'
                 id={this.props.awayTeam}
-                onClick={(e) => this.addPick(e, this.props.awayTeam, this.props.id)}
+                opponent={this.props.homeTeam}
+                onClick={(e) => this.addPick(e, this.props.awayTeam, this.props.id, this.props.homeTeam)}
                 style={{border: `${this.state.awayBorder}`}} >
 
             <Card.Content>
@@ -65,7 +72,8 @@ class Matchups extends React.Component {
          <Card className='home-teams'
                id={this.props.homeTeam}
                style={{border: `${this.state.homeBorder}`}}
-               onClick={(e) => this.addPick(e, this.props.homeTeam, this.props.id)}>
+               opponent={this.props.awayTeam}
+               onClick={(e) => this.addPick(e, this.props.homeTeam, this.props.id, this.props.awayTeam)}>
 
            <Card.Content>
              <Image floated='right' size='mini' src={`./logos/${this.homeNames}.png`} style={{margin: '0', height: 'auto', width: '40px'}}/>

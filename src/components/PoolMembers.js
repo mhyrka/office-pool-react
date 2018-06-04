@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, Icon, Image, Popup, Button, Header, Modal } from 'semantic-ui-react'
+import { Card, Image, Button, Header, Modal } from 'semantic-ui-react'
 
 
 class PoolMembers extends React.Component {
