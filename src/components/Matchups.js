@@ -10,9 +10,11 @@ class Matchups extends React.Component {
     this.state = {
       awayBorder: 'none',
       homeBorder: 'none',
-      selectedTeam: ''
+      selectedTeam: '',
+      refreshComponent: false
     }
   }
+
 
   addPick = (event, data, teamId, opponent) => {
     event.preventDefault()
@@ -33,14 +35,22 @@ class Matchups extends React.Component {
   }
 
   removeBorder = (data) => {
-    
     if (!this.props.picks.includes(data)) {
       this.setState({homeBorder: 'none', awayBorder: 'none'})
     }
   }
 
+  resetBorders = () => {
+    this.setState({homeBorder: 'none', awayBorder: 'none'}, () => {console.log(this.state.homeBorder, this.props.homeTeam, this.state.awayBorder, this.props.awayTeam)})
+  }
+
+  componentWillReceiveProps = () => {
+    const cleared = this.props.isCleared
+    cleared ? this.setState({homeBorder: 'none', awayBorder: 'none'}, () => {this.props.toggleIsPosted()}) : null
+  }
 
   render() {
+
     return (
 
       <React.Fragment>
@@ -49,7 +59,7 @@ class Matchups extends React.Component {
                 id={this.props.awayTeam}
                 opponent={this.props.homeTeam}
                 onClick={(e) => this.addPick(e, this.props.awayTeam, this.props.id, this.props.homeTeam)}
-                style={{border: `${this.state.awayBorder}`}} >
+                style={{ border: `${this.state.awayBorder}`}} >
 
             <Card.Content>
               <Image floated='right' size='mini' src={`./logos/${this.awayNames}.png`} style={{margin: '0', height: 'auto', width: '40px'}}/>
@@ -68,7 +78,7 @@ class Matchups extends React.Component {
 
        <div className='at'><h3>-AT-</h3></div>
 
-       <div className='right' >
+       <div className='right'>
          <Card className='home-teams'
                id={this.props.homeTeam}
                style={{border: `${this.state.homeBorder}`}}

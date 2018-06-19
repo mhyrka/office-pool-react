@@ -13,14 +13,46 @@ class SideNav extends React.Component {
     this.state = {
       open: false,
       size: 'large',
-      userCards: []
+      userCards: [],
+      userPicks: [],
+      userId: 1
     }
   }
 
   componentDidMount() {
-    fetch('https://office-pool-nfl-schedule.herokuapp.com/user_picks')
+    fetch('https://office-pool-nfl-schedule.herokuapp.com/users')
     .then(response => response.json())
-    .then(response => this.setState({userCards: response.user_picks.map(picks => picks)}))
+    .then(response => this.setUserCards(response))
+
+    this.fetchUserPicks = () => {
+      fetch(`https://office-pool-nfl-schedule.herokuapp.com/userpicks/${this.state.userId}`)
+      .then(response => response.json())
+      .then(response => this.filterPicks(response))
+
+    }
+  }
+
+
+  setUserCards = (data) => {
+    let userData = []
+    data.user.map(user => userData.push(user))
+    this.setState({userCards: this.state.userCards.concat(userData)})
+  }
+
+  filterPicks = (data) => {
+
+    let userPicks = []
+    data.map(pick => userPicks.push(pick))
+    this.setState({userPicks: userPicks})
+  }
+
+  setUserId = (event, userId) => {
+    this.setState({ userId: userId }, () => this.viewPicks())
+    this.props.setUserId(event, userId)
+  }
+
+  viewPicks = () => {
+    this.fetchUserPicks()
   }
 
   show = size => () => this.setState({ size, open: true })
@@ -36,7 +68,7 @@ class SideNav extends React.Component {
           <h2>My Pool</h2>
         </div>
         <div className='player-cards'>
-          <Card style={{margin: '10px', height: '170px'}}>
+          <Card style={{margin: '10px', height: '170px'}} >
             <Card.Content>
               <Image floated='right' size='mini' src='./MM.png' />
               <Card.Header>
@@ -64,12 +96,17 @@ class SideNav extends React.Component {
               </div>
             </Card.Content>
           </Card>
-          {this.state.userCards.map((users, index) => {
+
+          {this.state.userCards.map((user, index) => {
             return <PoolMembers className='pool-members'
                                 key={index}
-                                userCards={users}
-                                name={users.user_name}
-                                picks={users.picks} />
+                                userCards={user}
+                                name={user.user_name}
+                                userId={user.id}
+                                userPicks={this.state.userPicks}
+                                setUserId={this.setUserId}
+                                viewPicks={this.viewPicks} />
+
           })}
         </div>
       </div>

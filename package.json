@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.16.3",
+    "knex": "^0.14.6",
+    "pg": "^7.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-stripe-elements": "^1.6.0",
     "semantic-ui-react": "^0.80.0"
@@ -12,7 +16,23 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "npx cypress open",
     "eject": "react-scripts eject"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhyrka/office-pool-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhyrka/office-pool-react/issues"
+  },
+  "homepage": "https://github.com/mhyrka/office-pool-react#readme"
 }
