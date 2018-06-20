@@ -7,7 +7,7 @@ https://office-pool-tower.firebaseapp.com/
 
 
 ### **Backend gitHub**
-https://github.com/mhyrka/gearup-back
+https://github.com/mhyrka/office-pool-custom-api
 
 
 ### **Built With**
