@@ -3,6 +3,8 @@
 OfficePool allows users to create 'pools' with friends and coworkers to see who
 is the best at guessing outcomes of sports matches.
 [Here](https://office-pool-tower.firebaseapp.com/) is a link to the site!
+To contribute, fork and clone this repo to your local machine and run ```npm install```
+to install dependencies. 
 
 ### **Backend repo**
 
